@@ -1,40 +1,29 @@
+
 import React, { useState } from "react";
+import "./App.css";
 
 function App() {
-
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      name: "Laptop",
-      price: 50000,
-      quantity: 1
-    },
-    {
-      id: 2,
-      name: "Headphones",
-      price: 2000,
-      quantity: 1
-    },
-    {
-      id: 3,
-      name: "Mouse",
-      price: 800,
-      quantity: 1
-    }
-  ]);
-
-  // TODO:
-  // Display cart products using map()
-  // Implement increase quantity
-  // Implement decrease quantity
-  // Calculate total amount
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [name, setName] = useState("");
 
   return (
     <div>
-      <h1>Shopping Cart</h1>
+      {isLoggedIn ? (
+        <h1>Welcome Student {name}</h1>
+      ) : (
+        <>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-      {/* Students implement the cart here */}
-
+          <button onClick={() => setIsLoggedIn(true)}>
+            Login
+          </button>
+        </>
+      )}
     </div>
   );
 }
